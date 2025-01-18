@@ -47,9 +47,9 @@ const Login: React.FC = () => {
                             </button>
                             {/* Label for Fullname */}
                             <label
-                                className={`absolute left-8 top-2 text-gray-400 transition-all duration-200 ${isNameFocused || fullName
+                                className={`absolute left-8 text-gray-400 transition-all duration-200 ${isNameFocused || fullName
                                     ? "text-xs -top-3 left-2 px-2 text-green-600 bg-white"
-                                    : "text-base top-2.5"
+                                    : "text-base top-2"
                                     }`}
                                 htmlFor="fullName"
                             >
@@ -76,9 +76,9 @@ const Login: React.FC = () => {
                             </button>
                             {/* Label for mail */}
                             <label
-                                className={`absolute left-8 top-2 text-gray-400 transition-all duration-200 ${isMailFocused || mail
+                                className={`absolute left-8 text-gray-400 transition-all duration-200 ${isMailFocused || mail
                                     ? "text-xs -top-3 left-2 px-2 text-green-600 bg-white"
-                                    : "text-base top-2.5"
+                                    : "text-base top-2"
                                     }`}
                                 htmlFor="mail"
                             >
@@ -111,9 +111,9 @@ const Login: React.FC = () => {
                             </button>
                             {/* Label for password */}
                             <label
-                                className={`absolute left-8 top-2 text-gray-400 transition-all duration-200 ${isPasswordFocused || password
-                                    ? "text-xs -top-2 left-2 px-2 text-green-600 bg-white"
-                                    : "text-base top-2.5"
+                                className={`absolute left-8 text-gray-400 transition-all duration-200 ${isPasswordFocused || password
+                                    ? "text-xs -top-3 left-2 px-2 text-green-600 bg-white"
+                                    : "text-base top-2"
                                     }`}
                                 htmlFor="password"
                             >
