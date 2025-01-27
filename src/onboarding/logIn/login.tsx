@@ -1,6 +1,6 @@
 import cloudImages from "../../assets";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login: React.FC = () => {
     const [mail, setMail] = useState<string>("");
@@ -12,14 +12,14 @@ const Login: React.FC = () => {
     const [passwordWarning, setPasswordWarning] = useState<string>("");
 
 
-
+    const navigate = useNavigate();
 
     const handleLoginData = () => {
         let valid = true;
 
         // Validate Email
         if (!mail.includes("@") || !mail.includes(".")) {
-            setMailWarning("ekem@gmail.com");
+            setMailWarning("Enter a proper email");
             valid = false;
         } else {
             setMailWarning("");
@@ -27,7 +27,7 @@ const Login: React.FC = () => {
 
         // Validate Password
         if (password.trim().length < 8) {
-            setPasswordWarning("Password should be at least 8 characters long.");
+            setPasswordWarning("Password incorrect");
             valid = false;
         } else {
             setPasswordWarning("");
@@ -37,6 +37,7 @@ const Login: React.FC = () => {
         if (valid) {
             setMail("");
             setPassword("");
+            navigate("/homepage")
         }
 
     };
@@ -90,15 +91,15 @@ const Login: React.FC = () => {
                         <div className="mb-5">
                             <div className={`relative w-full flex border border-gray-300 rounded-md ${isPasswordFocused || password ? "border-green-600" : ""}`}>
                                 {/* left green border to cover invisible expanded input width */}
-                                <div
+                                {/* <div
                                     className={`absolute left-0 top-0 h-full w-1 transition-all duration-300 ${isPasswordFocused || password ? "border border-l-green-600 border-r-0" : "bg-transparent"
                                         }`}
-                                ></div>
+                                ></div> */}
 
                                 {/* lock icon */}
-                                <button className={`pl-2 border- ${isPasswordFocused || password ? "hidden" : "block"}`}>
+                                {/* <button className={`pl-2 border- ${isPasswordFocused || password ? "hidden" : "block"}`}>
                                     <img src={cloudImages.padlock} width={25} height={25} alt="padlock icon" />
-                                </button>
+                                </button> */}
                                 {/* Label for password */}
                                 <label
                                     className={`absolute left-8 text-gray-400 transition-all duration-200 ${isPasswordFocused || password
@@ -135,7 +136,9 @@ const Login: React.FC = () => {
 
 
                         <p className="text-sm text-green-600 mb-8 pr-5 text-right cursor-pointer">
-                            Forget Password?
+                            <Link to="/forgotPassword">
+                                Forget Password?
+                            </Link>
                         </p>
                         <button
                             className="w-1/2 p-2 bg-green-600 rounded-full text-white"

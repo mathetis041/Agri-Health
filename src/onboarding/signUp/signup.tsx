@@ -1,6 +1,6 @@
 import cloudImages from "../../assets";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login: React.FC = () => {
     const [fullName, setFullName] = useState<string>("");
@@ -15,7 +15,7 @@ const Login: React.FC = () => {
     const [passwordWarning, setPasswordWarning] = useState<string>("");
 
 
-
+    const navigate = useNavigate();
 
     const handleSignupData = () => {
         let valid = true;
@@ -49,7 +49,7 @@ const Login: React.FC = () => {
             setFullName("");
             setMail("");
             setPassword("");
-            alert("Signup Successful!");
+            navigate("/homepage");
         }
 
     };
@@ -136,15 +136,15 @@ const Login: React.FC = () => {
                         <div className="mb-5">
                             <div className={`relative w-full flex border border-gray-300 rounded-md ${isPasswordFocused || password ? "border-green-600" : ""}`}>
                                 {/* left green border to cover invisible expanded input width */}
-                                <div
+                                {/* <div
                                     className={`absolute left-0 top-0 h-full w-1 transition-all duration-300 ${isPasswordFocused || password ? "border border-l-green-600 border-r-0" : "bg-transparent"
                                         }`}
-                                ></div>
+                                ></div> */}
 
                                 {/* lock icon */}
-                                <button className={`pl-2 border- ${isPasswordFocused || password ? "hidden" : "block"}`}>
+                                {/* <button className={`pl-2 border- ${isPasswordFocused || password ? "hidden" : "block"}`}>
                                     <img src={cloudImages.padlock} width={25} height={25} alt="padlock icon" />
-                                </button>
+                                </button> */}
                                 {/* Label for password */}
                                 <label
                                     className={`absolute left-8 text-gray-400 transition-all duration-200 ${isPasswordFocused || password
